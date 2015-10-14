@@ -14,8 +14,9 @@ MARY TTS Server should be running locally.
 * Step 3: Verify the MARY TTS Server status at http://localhost:59125/
  
 ## Links
-* http://mary.dfki.de/download/index.html
-* https://github.com/marytts/marytts/releases/tag/v4.3.1
+* link:http://mary.dfki.de/download/index.html
+* link:https://github.com/marytts/marytts/releases/tag/v4.3.1
+* link:http://blog.bickle.co.uk/it-technology/maryspeak-a-command-line-wrapper-for-marytts[Mary TTS API Parameters details]
 
 [1]: https://secure.travis-ci.org/SwaroopG/text2audio-converter.png
 [2]: http://www.travis-ci.org/SwaroopG/text2audio-converter
