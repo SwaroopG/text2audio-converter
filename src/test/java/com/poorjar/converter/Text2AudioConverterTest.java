@@ -4,9 +4,8 @@ import marytts.util.io.FileUtils;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
-
-import com.poorjar.converter.Text2AudioConverter;
 
 /**
  * @author Swaroop
@@ -27,6 +26,7 @@ public class Text2AudioConverterTest
         converter.convertText2Audio("");
     }
 
+    @Ignore
     @Test
     public void testSingleTextFileConversion() throws Exception
     {
@@ -45,6 +45,7 @@ public class Text2AudioConverterTest
         converter.convertText2AudioFromDir("");
     }
 
+    @Ignore
     @Test
     public void testDirectoryConversion() throws Exception
     {
