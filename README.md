@@ -2,8 +2,6 @@
 [![Build Status][1]][2]
 [![Coverage Status][3]][4]
 
-## Welcome to the text2audio-converter project!
-
 ## Building the Project
 * **gradle clean build**
 * **gradle cobertura**
