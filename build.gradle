@@ -1,0 +1,43 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'cobertura'
+apply plugin: 'com.github.kt3k.coveralls'
+
+jar {
+    baseName = 'text2audio-converter'
+    version =  '1.0'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://repo.spring.io/libs-milestone/'
+        url 'http://oss.jfrog.org/artifactory/libs-release'
+    }
+}
+
+dependencies {
+    compile 'com.google.guava:guava:18.0'
+    compile 'de.dfki.mary:marytts:5.1.2'
+    compile 'de.dfki.mary:marytts-common:5.1.2'
+    compile 'de.dfki.mary:marytts-lang-en:5.1.2'
+    compile 'de.dfki.mary:voice-cmu-slt-hsmm:5.1.2'
+    compile 'de.dfki.mary:marytts-runtime:5.1.2'
+    compile 'de.dfki.mary:marytts-client:5.1.1'
+    compile 'com.codahale.metrics:metrics-core:3.0.2'
+
+    // Test dependencies
+    testCompile 'junit:junit:4.12'
+}
+
+buildscript {
+    repositories { mavenCentral() }
+    dependencies {
+        classpath 'net.saliman:gradle-cobertura-plugin:2.2.7'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.3.1'
+    }
+}
+
+task wrapper(type: Wrapper) { gradleVersion = '2.3' }
+
+cobertura.coverageFormats = ['html', 'xml']
