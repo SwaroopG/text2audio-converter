@@ -57,7 +57,7 @@ public class Text2AudioConverter
             throw new IllegalArgumentException("Invalid file path");
         }
 
-        LOGGER.info("Starting conversion of file : " + inputFile);
+        LOGGER.debug("Starting conversion of file : " + inputFile);
 
         // Timing the conversion process
         long startTime = System.nanoTime();
@@ -78,7 +78,7 @@ public class Text2AudioConverter
         // Timing purpose
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);
-        LOGGER.info("Text to audio conversion time : " + duration / 1000000000.0 + " seconds");
+        LOGGER.info("Conversion time for file : " + inputFile + " took " + duration / 1000000000.0 + " secs");
     }
 
     /**
