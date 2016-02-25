@@ -2,8 +2,7 @@ package com.poorjar.converter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.FileOutputStream;
 import java.util.Set;
 import java.util.StringTokenizer;
 
@@ -11,7 +10,6 @@ import marytts.client.MaryClient;
 import marytts.util.http.Address;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
@@ -66,14 +64,15 @@ public class Text2AudioConverter
         String inputText = FileUtils.readFileToString(new File(inputFile));
 
         // Text to Audio format conversion
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ByteArrayOutputStream audioOutputStream = new ByteArrayOutputStream();
         MaryClient mary = MaryClient.getMaryClient(new Address(maryHostname, maryPort));
-        mary.process(inputText, inputType, outputType, locale, audioType, voiceName, baos);
+        mary.process(inputText, inputType, outputType, locale, audioType, voiceName, audioOutputStream);
 
         // The byte array constitutes a full wave file, including the header. Write the byte array to file.
-        FileWriter audioFile = getOutputFileWriter(inputFile);
-        IOUtils.write(baos.toByteArray(), audioFile);
-        IOUtils.closeQuietly(audioFile);
+        FileOutputStream fileOut = new FileOutputStream(getOutputFile(inputFile));
+        audioOutputStream.writeTo(fileOut);
+        audioOutputStream.flush();
+        fileOut.close();
 
         // Timing purpose
         long endTime = System.nanoTime();
@@ -121,10 +120,10 @@ public class Text2AudioConverter
 
     }
 
-    private FileWriter getOutputFileWriter(String fileName) throws IOException
+    private File getOutputFile(String fileName)
     {
         StringTokenizer tokenizer = new StringTokenizer(fileName, ".");
-        return new FileWriter(tokenizer.nextToken() + ".wav");
+        return new File(tokenizer.nextToken() + ".wav");
     }
 
     // TODO: Experiment with Codahale Metrics later

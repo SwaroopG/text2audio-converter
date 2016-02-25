@@ -14,12 +14,14 @@ public class Text2AudioConverterTest
 {
     Text2AudioConverter converter = new Text2AudioConverter();
 
+    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testNullFileNameConversion() throws Exception
     {
         converter.convertText2Audio(null);
     }
 
+    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testEmptyFileNameConversion() throws Exception
     {
@@ -33,19 +35,20 @@ public class Text2AudioConverterTest
         converter.convertText2Audio("src/test/resources/file1.txt");
     }
 
+    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testEmptyDirectoryConversion() throws Exception
     {
         converter.convertText2AudioFromDir("src/main/resources/");
     }
 
+    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testEmptyDirectoryNameConversion() throws Exception
     {
         converter.convertText2AudioFromDir("");
     }
 
-    @Ignore
     @Test
     public void testDirectoryConversion() throws Exception
     {
@@ -53,7 +56,7 @@ public class Text2AudioConverterTest
     }
 
     @BeforeClass
-    @AfterClass
+    //@AfterClass
     public static void cleanup()
     {
         String[] generatedAudioFiles = FileUtils.getFileList("src/test/resources/", "wav");
