@@ -49,6 +49,7 @@ public class Text2AudioConverterTest
         converter.convertText2AudioFromDir("");
     }
 
+    @Ignore
     @Test
     public void testDirectoryConversion() throws Exception
     {
