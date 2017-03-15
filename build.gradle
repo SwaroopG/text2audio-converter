@@ -11,8 +11,10 @@ jar {
 repositories {
     mavenCentral()
     maven {
-        url 'http://repo.spring.io/libs-milestone/'
         url 'http://oss.jfrog.org/artifactory/libs-release'
+    }
+    maven {
+        url 'http://repo.spring.io/libs-milestone/'
     }
 }
 
@@ -25,6 +27,7 @@ dependencies {
     compile 'de.dfki.mary:marytts-runtime:5.1.2'
     compile 'de.dfki.mary:marytts-client:5.1.1'
     compile 'com.codahale.metrics:metrics-core:3.0.2'
+    compile 'net.bramp.ffmpeg:ffmpeg:0.6.1'
 
     // Test dependencies
     testCompile 'junit:junit:4.12'
